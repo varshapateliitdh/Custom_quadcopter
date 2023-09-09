@@ -1,0 +1,145 @@
+<?xml version="1.0" ?>
+<robot name="quadcopter" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+<xacro:include filename="$(find quadcopter_description)/urdf/materials.xacro" />
+<xacro:include filename="$(find quadcopter_description)/urdf/quadcopter.trans" />
+<xacro:include filename="$(find quadcopter_description)/urdf/quadcopter.gazebo" />
+<link name="dummy">
+   </link>
+<link name="base_link">
+  <inertial>
+    <origin xyz="-4.7432749483691953e-07 -2.725764951815054e-08 0.20921008016735257" rpy="0 0 0"/>
+    <mass value="0.9057066257259532"/>
+    <inertia ixx="0.006753" iyy="0.006521" izz="0.0106" ixy="-0.0" iyz="-0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://quadcopter_description/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://quadcopter_description/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+<joint name="dummy_joint" type="fixed">
+     <parent link="dummy"/>
+     <child link="base_link"/>
+</joint>
+<link name="propeller_1">
+  <inertial>
+    <origin xyz="-3.6946080161914807e-07 -4.126375907631541e-09 -0.0010760779654073183" rpy="0 0 0"/>
+    <mass value="0.005927703872591894"/>
+    <inertia ixx="0.0" iyy="1.2e-05" izz="1.2e-05" ixy="0.0" iyz="-0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.16057 -0.16057 -0.255" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://quadcopter_description/meshes/propeller_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.16057 -0.16057 -0.255" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://quadcopter_description/meshes/propeller_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="propeller_2">
+  <inertial>
+    <origin xyz="-3.694608015913925e-07 -1.937970742216244e-08 -0.0010760779654073183" rpy="0 0 0"/>
+    <mass value="0.005927703872591894"/>
+    <inertia ixx="0.0" iyy="1.2e-05" izz="1.2e-05" ixy="0.0" iyz="-0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.16057 0.16057 -0.255" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://quadcopter_description/meshes/propeller_2.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.16057 0.16057 -0.255" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://quadcopter_description/meshes/propeller_2.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="propeller_3">
+  <inertial>
+    <origin xyz="-3.847141331059234e-07 -1.937970742216244e-08 -0.0010760779654073183" rpy="0 0 0"/>
+    <mass value="0.005927703872591894"/>
+    <inertia ixx="0.0" iyy="1.2e-05" izz="1.2e-05" ixy="0.0" iyz="-0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.16057 0.16057 -0.255" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://quadcopter_description/meshes/propeller_3.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.16057 0.16057 -0.255" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://quadcopter_description/meshes/propeller_3.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="propeller_4">
+  <inertial>
+    <origin xyz="-3.847141331059234e-07 -4.126375907631541e-09 -0.0010760779654073183" rpy="0 0 0"/>
+    <mass value="0.005927703872591894"/>
+    <inertia ixx="0.0" iyy="1.2e-05" izz="1.2e-05" ixy="0.0" iyz="-0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.16057 -0.16057 -0.255" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://quadcopter_description/meshes/propeller_4.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.16057 -0.16057 -0.255" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://quadcopter_description/meshes/propeller_4.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<joint name="Revolute_5" type="continuous">
+  <origin xyz="0.16057 0.16057 0.255" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="propeller_1"/>
+  <axis xyz="0.0 0.0 1.0"/>
+</joint>
+
+<joint name="Revolute_6" type="continuous">
+  <origin xyz="0.16057 -0.16057 0.255" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="propeller_2"/>
+  <axis xyz="0.0 0.0 1.0"/>
+</joint>
+
+<joint name="Revolute_7" type="continuous">
+  <origin xyz="-0.16057 -0.16057 0.255" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="propeller_3"/>
+  <axis xyz="0.0 0.0 1.0"/>
+</joint>
+
+<joint name="Revolute_8" type="continuous">
+  <origin xyz="-0.16057 0.16057 0.255" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="propeller_4"/>
+  <axis xyz="0.0 0.0 1.0"/>
+</joint>
+
+</robot>
